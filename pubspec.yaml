@@ -10,7 +10,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -19,11 +19,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
+  chopper: ^3.0.0
+  provider: ^3.1.0
+  built_value: ^6.7.1
+  connectivity: ^0.4.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  chopper_generator: ^3.0.0
+  built_value_generator: ^6.7.1
+  build_runner: 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
