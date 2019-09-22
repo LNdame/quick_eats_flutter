@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/src/views/login/login_page.dart';
 import 'views/mainview.dart';
 import 'package:quick_eats/res/colors.dart';
 
@@ -9,11 +10,12 @@ class QuickEats extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Quick Eats',
-      initialRoute: '/home',
+      initialRoute: '/login',
       home: MainView(),
       theme: _qeTheme,
       routes: {
         '/home': (context) => MainView(),
+        '/login': (context) => LoginPage(),
       },
     );
   }

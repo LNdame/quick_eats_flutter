@@ -16,3 +16,13 @@ const qePrimaryLight = const Color(0xFF56c8d8);
 
 const qePrimaryText = const Color(0xFF000000);
 const qePrimaryAltText = const Color(0xFF212121);
+
+const Color loginGradientStart = const Color(0xFFfbab66);
+const Color loginGradientEnd = const Color(0xFFf7418c);
+
+const primaryGradient = const LinearGradient(
+  colors: const [loginGradientStart, loginGradientEnd],
+  stops: const [0.0, 1.0],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);

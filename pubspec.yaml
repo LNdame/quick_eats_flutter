@@ -22,7 +22,8 @@ dependencies:
   chopper: ^3.0.0
   provider: ^3.1.0
   built_value: ^6.7.1
-  connectivity: ^0.4.4
+ # connectivity: ^0.4.4
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:
