@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/src/datarepo/vendor_data_manager.dart';
+import 'package:quick_eats/src/models/vendor_model.dart';
 import 'package:quick_eats/src/ui_reusable/bought_food_widget.dart';
 import 'package:quick_eats/src/ui_reusable/home_top_widget.dart';
 import 'package:quick_eats/src/ui_reusable/search_widget.dart';
@@ -9,6 +11,7 @@ import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/models/food_model.dart';
 //import the data from fake(for now) repo
 import 'package:quick_eats/src/datarepo/food_data.dart';
+import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
 
 
 
@@ -19,7 +22,16 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List<Vendor> _vendors;
+
+  @override
+  void initState() {
+
+  }
+
   List<Food> _foods = foods;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -35,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Frequently Bought Foods",
+              Text("Discover the foods around you",
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -56,11 +68,62 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 20.0,),
           Column(
-              children: _foods.map(_buildFoodItems).toList(),
+           mainAxisSize: MainAxisSize.min,
+           //   children: _foods.map(_buildFoodItems).toList(),
+            children: <Widget>[
+                 Flexible(
+                   fit: FlexFit.loose,
+                   flex: 1,
+                  child: _frontVendorBuilder(context) ,
+                ),
+
+
+            ],
           )
 
         ],
       ),
+    );
+  }
+
+  FutureBuilder<List<Vendor>> _frontVendorBuilder(BuildContext context){
+    return FutureBuilder<List<Vendor>>(
+      future: VendorDataManager.requestAllVendors(context),
+      builder: (context, snapshot){
+        if(snapshot.connectionState == ConnectionState.done){
+          if(snapshot.hasError){
+            return Center(
+              child: Text(
+                snapshot.error.toString(),
+                textAlign: TextAlign.center,
+                textScaleFactor: 1.3,
+              ),
+            );
+          }
+          final List<Vendor> vendorList = snapshot.data;
+          return _buildVendors(context, vendorList) ;// vendorList.map(_buildVendorItems).toList();
+          return null;
+        }else{
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+
+    );
+  }
+
+  ListView _buildVendors(BuildContext context, List<Vendor> vendorList) {
+    return ListView.builder(
+      shrinkWrap: true,
+        itemCount: vendorList.length,
+        itemBuilder: (context, index) {
+          return  Container(
+            margin: EdgeInsets.only(bottom: 20.0),
+            child: VendorFrontCard(vendorList[index]
+            ),
+          );
+        }
     );
   }
 
@@ -78,5 +141,16 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+//  Container(
+//  margin: EdgeInsets.only(bottom: 20.0),
+//  child: Card(
+//return  Card(
+//            child: ListTile(
+//              title: Text( vendorList[index].name),
+//              subtitle: Text(vendorList[index].description),
+//            ),
+//          );
+//      )    ,      //VendorFron
 
 }

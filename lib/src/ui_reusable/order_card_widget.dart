@@ -46,7 +46,7 @@ class _OrderCardState extends State<OrderCard> {
                     InkWell(
                       onTap: (){},
                       child: Icon(
-                        Icons.keyboard_arrow_up,
+                        Icons.keyboard_arrow_down,
                         color: Color(0xFFD3D3D3),
                       ),
                     ),
