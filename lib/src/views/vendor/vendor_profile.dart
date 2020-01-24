@@ -20,8 +20,7 @@ class VendorProfile extends StatefulWidget{
 class _VendorProfileState extends State<VendorProfile> {
   @override
   void initState()  {
-    // TODO: implement initState
-  //  loadVendors();
+
     super.initState();
 
   }
@@ -79,7 +78,7 @@ class _VendorProfileState extends State<VendorProfile> {
       ),
     );
   }
-
+  /*unused*/
   Future loadVendors() async {
     final response = await Provider.of<VendorApiService>(context).getAllVendors();
     if(response.statusCode == 200){

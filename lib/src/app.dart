@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
+import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
+import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
 import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
 import 'data/vendor_api_service.dart';
 import 'views/mainview.dart';
@@ -20,13 +22,14 @@ class QuickEats extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Quick Eats',
-        initialRoute: '/home',
+        initialRoute: '/menu_item',
         home: MainView(),
         theme: _qeTheme,
         routes: {
           '/home': (context) => MainView(),
           '/login': (context) => LoginPage(),
-          '/vendor': (context) => VendorProfile(),
+          '/menu_item': (context) => MenuItemPage(),
+          '/vendor': (context) => VendorLanding(),
         },
       ),
     );
