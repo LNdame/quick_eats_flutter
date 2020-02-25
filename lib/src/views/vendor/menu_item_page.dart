@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/res/colors.dart';
+import 'package:quick_eats/src/ui_reusable/home_arrow.dart';
 
 class MenuItemPage extends StatefulWidget {
   @override
@@ -12,7 +14,7 @@ class _MenuItemPageState extends State<MenuItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: qeBackgroundWhite,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -35,18 +37,7 @@ class _MenuItemPageState extends State<MenuItemPage> {
                       fit: BoxFit.fitWidth,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, top: 40.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 15.0,
-                      child: Icon(
-                        Icons.keyboard_arrow_left,
-                        color: Colors.black,
-                        size: 20.0,
-                      ),
-                    ),
-                  ),
+                  HomeArrow(),
                   Container(
                       height: 200,
                       width: MediaQuery.of(context).size.width,
@@ -195,7 +186,7 @@ class _MenuItemPageState extends State<MenuItemPage> {
       padding: const EdgeInsets.all(10.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.grey,
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Padding(
           padding: const EdgeInsets.only(right: 10.0),
@@ -213,39 +204,43 @@ class _MenuItemPageState extends State<MenuItemPage> {
   }
 
   Widget buildAddToCartInfo() {
-    return Container(
-      height: 180,
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Total",
-              style: Theme.of(context).textTheme.title,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "R 32.99",
-              style: TextStyle(
-                  fontSize: 45, fontWeight: FontWeight.w200, letterSpacing: 6),
-            ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: RaisedButton(
-              color: Theme.of(context).accentColor,
-              textColor: Colors.white,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                child: Text("Add to Cart"),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 50,
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Total",
+                style: Theme.of(context).textTheme.title,
               ),
-              onPressed: () {},
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "R 32.99",
+                style: TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 4),
+              ),
+            ),
+            Spacer(),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: RaisedButton(
+                color: Theme.of(context).accentColor,
+                textColor: Colors.white,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
+                  child: Text("Add to Cart"),
+                ),
+                onPressed: () {},
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
