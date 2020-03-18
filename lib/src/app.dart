@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
+import 'package:quick_eats/src/views/login/login_page.dart';
+import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
+import 'package:quick_eats/src/views/vendor/vendor_all.dart';
+import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
+import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
+import 'data/vendor_api_service.dart';
+import 'models/vendor_model.dart';
 import 'views/mainview.dart';
 import 'package:quick_eats/res/colors.dart';
 
@@ -6,15 +15,27 @@ class QuickEats extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Quick Eats',
-      initialRoute: '/home',
-      home: MainView(),
-      theme: _qeTheme,
-      routes: {
-        '/home': (context) => MainView(),
-      },
+    return MultiProvider(
+      providers: [
+        Provider(
+            builder: (_)=>VendorApiService.create(),
+          dispose: (_,VendorApiService service)=>service.client.dispose(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Quick Eats',
+        initialRoute: '/menu_item',
+        home: MainView(),
+        theme: _qeTheme,
+        routes: {
+          '/home': (context) => MainView(),
+          '/login': (context) => LoginPage(),
+          '/menu_item': (context) => MenuItemPage(),
+          '/vendor': (context) => VendorLanding(),
+          '/vendor_all': (context) => VendorAll(),
+        },
+      ),
     );
   }
 }
