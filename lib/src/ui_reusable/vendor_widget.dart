@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating/flutter_rating.dart';
-import 'package:quick_eats/src/models/vendor_model.dart';
+import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
 
 class VendorFrontCard extends StatefulWidget{

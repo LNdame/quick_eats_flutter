@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quick_eats/res/colors.dart';
-import 'package:quick_eats/src/models/vendor_model.dart';
+import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/ui_reusable/home_arrow.dart';
 import 'package:quick_eats/src/ui_reusable/search_widget.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';

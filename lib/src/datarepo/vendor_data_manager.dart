@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_eats/src/data/vendor_api_service.dart';
-import 'package:quick_eats/src/models/vendor_model.dart';
+import 'package:quick_eats/src/models/vendor_model.bak.dart';
 
 class VendorDataManager{
   final BuildContext context;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/data/vendor_api_service.dart';
-import 'package:quick_eats/src/models/vendor_model.dart';
+import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/ui_reusable/top_info.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_menu_item.dart';
 

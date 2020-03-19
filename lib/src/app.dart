@@ -7,7 +7,7 @@ import 'package:quick_eats/src/views/vendor/vendor_all.dart';
 import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
 import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
 import 'data/vendor_api_service.dart';
-import 'models/vendor_model.dart';
+import 'models/vendor_model.bak.dart';
 import 'views/mainview.dart';
 import 'package:quick_eats/res/colors.dart';
 
@@ -18,7 +18,7 @@ class QuickEats extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(
-            builder: (_)=>VendorApiService.create(),
+            create: (_)=>VendorApiService.create(),
           dispose: (_,VendorApiService service)=>service.client.dispose(),
         )
       ],
