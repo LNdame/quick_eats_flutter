@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_eats/bloc/restaurant_bloc/bloc.dart';
 import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/ui_reusable/home_arrow.dart';
 import 'package:quick_eats/src/ui_reusable/search_widget.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
+import 'package:quick_eats/src/views/restaurant/restaurant_widget.dart';
 
 class VendorAll extends StatefulWidget {
   @override
@@ -25,7 +28,15 @@ class _VendorAllState extends State<VendorAll> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: qeBackgroundWhite,
-        body: Padding(
+        body: BlocProvider(
+          create: (context)=>RestaurantBloc(context: context),
+          child: RestaurantWidget(),
+        )
+    );
+
+  }
+}
+/*Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
 
@@ -80,8 +91,4 @@ class _VendorAllState extends State<VendorAll> {
 
             ],
           ),
-        )
-    );
-
-  }
-}
+        )*/

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_eats/src/data/restaurant_api_service.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
+import 'package:quick_eats/src/utils/test_zone.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
 import 'package:quick_eats/src/views/vendor/vendor_all.dart';
@@ -18,15 +20,19 @@ class QuickEats extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(
-            create: (_)=>VendorApiService.create(),
+            create: (_)=>RestaurantApiService.create(),
+          dispose: (_,RestaurantApiService service)=>service.client.dispose(),
+        ),
+        Provider(
+          create: (_)=>VendorApiService.create(),
           dispose: (_,VendorApiService service)=>service.client.dispose(),
         )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Quick Eats',
-        initialRoute: '/menu_item',
-        home: MainView(),
+        initialRoute: '/vendor_all', //'''/vendor_all',
+        home:VendorAll(),  //MainView(), VendorAll()
         theme: _qeTheme,
         routes: {
           '/home': (context) => MainView(),
@@ -34,6 +40,7 @@ class QuickEats extends StatelessWidget {
           '/menu_item': (context) => MenuItemPage(),
           '/vendor': (context) => VendorLanding(),
           '/vendor_all': (context) => VendorAll(),
+          '/test': (context) => TestZone(),
         },
       ),
     );

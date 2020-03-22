@@ -6,11 +6,11 @@ part 'menu_item_model.g.dart';
 abstract class MenuItem implements Built<MenuItem, MenuItemBuilder>{
 
   @nullable
-  int get id;
+  String get id;
   @nullable
   String get menu_name;
   @nullable
-  int get restaurant_id;
+  String get restaurant_id;
   @nullable
   String get description;
 

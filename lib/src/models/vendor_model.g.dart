@@ -22,7 +22,7 @@ class _$VendorSerializer implements StructuredSerializer<Vendor> {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     if (object.name != null) {
       result
@@ -34,7 +34,7 @@ class _$VendorSerializer implements StructuredSerializer<Vendor> {
       result
         ..add('category_id')
         ..add(serializers.serialize(object.category_id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     if (object.contact_person_name != null) {
       result
@@ -70,7 +70,7 @@ class _$VendorSerializer implements StructuredSerializer<Vendor> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
@@ -78,7 +78,7 @@ class _$VendorSerializer implements StructuredSerializer<Vendor> {
           break;
         case 'category_id':
           result.category_id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'contact_person_name':
           result.contact_person_name = serializers.deserialize(value,
@@ -101,11 +101,11 @@ class _$VendorSerializer implements StructuredSerializer<Vendor> {
 
 class _$Vendor extends Vendor {
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
-  final int category_id;
+  final String category_id;
   @override
   final String contact_person_name;
   @override
@@ -172,17 +172,17 @@ class _$Vendor extends Vendor {
 class VendorBuilder implements Builder<Vendor, VendorBuilder> {
   _$Vendor _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   String _name;
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  int _category_id;
-  int get category_id => _$this._category_id;
-  set category_id(int category_id) => _$this._category_id = category_id;
+  String _category_id;
+  String get category_id => _$this._category_id;
+  set category_id(String category_id) => _$this._category_id = category_id;
 
   String _contact_person_name;
   String get contact_person_name => _$this._contact_person_name;

@@ -22,7 +22,7 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     if (object.menu_name != null) {
       result
@@ -34,7 +34,7 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
       result
         ..add('restaurant_id')
         ..add(serializers.serialize(object.restaurant_id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     if (object.description != null) {
       result
@@ -58,7 +58,7 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'menu_name':
           result.menu_name = serializers.deserialize(value,
@@ -66,7 +66,7 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
           break;
         case 'restaurant_id':
           result.restaurant_id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
@@ -81,11 +81,11 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
 
 class _$MenuItem extends MenuItem {
   @override
-  final int id;
+  final String id;
   @override
   final String menu_name;
   @override
-  final int restaurant_id;
+  final String restaurant_id;
   @override
   final String description;
 
@@ -134,17 +134,18 @@ class _$MenuItem extends MenuItem {
 class MenuItemBuilder implements Builder<MenuItem, MenuItemBuilder> {
   _$MenuItem _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   String _menu_name;
   String get menu_name => _$this._menu_name;
   set menu_name(String menu_name) => _$this._menu_name = menu_name;
 
-  int _restaurant_id;
-  int get restaurant_id => _$this._restaurant_id;
-  set restaurant_id(int restaurant_id) => _$this._restaurant_id = restaurant_id;
+  String _restaurant_id;
+  String get restaurant_id => _$this._restaurant_id;
+  set restaurant_id(String restaurant_id) =>
+      _$this._restaurant_id = restaurant_id;
 
   String _description;
   String get description => _$this._description;

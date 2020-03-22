@@ -22,7 +22,7 @@ class _$RestaurantSerializer implements StructuredSerializer<Restaurant> {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     if (object.restaurant_name != null) {
       result
@@ -52,7 +52,7 @@ class _$RestaurantSerializer implements StructuredSerializer<Restaurant> {
       result
         ..add('vendor_id')
         ..add(serializers.serialize(object.vendor_id,
-            specifiedType: const FullType(int)));
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -70,7 +70,7 @@ class _$RestaurantSerializer implements StructuredSerializer<Restaurant> {
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'restaurant_name':
           result.restaurant_name = serializers.deserialize(value,
@@ -90,7 +90,7 @@ class _$RestaurantSerializer implements StructuredSerializer<Restaurant> {
           break;
         case 'vendor_id':
           result.vendor_id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -101,7 +101,7 @@ class _$RestaurantSerializer implements StructuredSerializer<Restaurant> {
 
 class _$Restaurant extends Restaurant {
   @override
-  final int id;
+  final String id;
   @override
   final String restaurant_name;
   @override
@@ -111,7 +111,7 @@ class _$Restaurant extends Restaurant {
   @override
   final String business_hours;
   @override
-  final int vendor_id;
+  final String vendor_id;
 
   factory _$Restaurant([void Function(RestaurantBuilder) updates]) =>
       (new RestaurantBuilder()..update(updates)).build();
@@ -172,9 +172,9 @@ class _$Restaurant extends Restaurant {
 class RestaurantBuilder implements Builder<Restaurant, RestaurantBuilder> {
   _$Restaurant _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   String _restaurant_name;
   String get restaurant_name => _$this._restaurant_name;
@@ -194,9 +194,9 @@ class RestaurantBuilder implements Builder<Restaurant, RestaurantBuilder> {
   set business_hours(String business_hours) =>
       _$this._business_hours = business_hours;
 
-  int _vendor_id;
-  int get vendor_id => _$this._vendor_id;
-  set vendor_id(int vendor_id) => _$this._vendor_id = vendor_id;
+  String _vendor_id;
+  String get vendor_id => _$this._vendor_id;
+  set vendor_id(String vendor_id) => _$this._vendor_id = vendor_id;
 
   RestaurantBuilder();
 

@@ -4,11 +4,11 @@ part 'vendor_model.g.dart';
 
 abstract class Vendor implements Built<Vendor, VendorBuilder>{
   @nullable
-  int get id;
+  String get id;
   @nullable
    String get name;
   @nullable
-  int get category_id;
+  String get category_id;
   @nullable
   String get contact_person_name;
   @nullable

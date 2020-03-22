@@ -80,10 +80,10 @@ class _VendorProfileState extends State<VendorProfile> {
   }
   /*unused*/
   Future loadVendors() async {
-    final response = await Provider.of<VendorApiService>(context).getAllVendors();
-    if(response.statusCode == 200){
-      print(response);
-    }
+   // final response = await Provider.of<VendorApiService>(context).getAllVendors();
+  //  if(response.statusCode == 200){
+    //  print(response);
+  //  }
   }
 
 }
