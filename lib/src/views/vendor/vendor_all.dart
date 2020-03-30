@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quick_eats/bloc/restaurant_bloc/bloc.dart';
+import 'package:quick_eats/blocs/restaurant_bloc/bloc.dart';
 import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/ui_reusable/home_arrow.dart';

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quick_eats/bloc/restaurant_bloc/bloc.dart';
-import 'package:quick_eats/bloc/restaurant_bloc/restaurant_bloc.dart';
+import 'package:quick_eats/blocs/restaurant_bloc/bloc.dart';
+import 'package:quick_eats/blocs/restaurant_bloc/restaurant_bloc.dart';
 import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/models/models.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:quick_eats/src/ui_reusable/alt_top_widget.dart';
 import 'package:quick_eats/src/ui_reusable/restaurant_card.dart';
+import 'package:quick_eats/src/views/restaurant/restaurant_list_widget.dart';
 
 
 class RestaurantWidget extends StatelessWidget {
@@ -17,30 +19,36 @@ class RestaurantWidget extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: qeBackgroundWhite,
-        body: Center(
-          child: BlocBuilder<RestaurantBloc, RestaurantState>(
-            builder: (context, state){
-              if(state is RestaurantEmpty){
-                return Center(child: CircularProgressIndicator(),);
-              }
-              if(state is RestaurantLoading){
-                return Center(child: CircularProgressIndicator(),);
-              }
-              if(state is RestaurantLoaded){
-                final BuiltList<Restaurant> restaurants = state.restaurants;
 
-                return _buildRestaurantList(context, restaurants);
-              }
-              if(state is RestaurantError){
-                return Text("Something went wrong!");
-              }
-              else{
-                return Text("Something went wrong!");
-              }
-            },
+        body: ListView(
+          children: <Widget>[
+           AltTopInfoWidget(),
+          Center(
+            child: BlocBuilder<RestaurantBloc, RestaurantState>(
+              builder: (context, state){
+                if(state is RestaurantEmpty){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if(state is RestaurantLoading){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if(state is RestaurantLoaded){
+                  final BuiltList<Restaurant> restaurants = state.restaurants;
+
+                  return buildRestaurantList(context, restaurants);
+                }
+                if(state is RestaurantError){
+                  return Text("Something went wrong!");
+                }
+                else{
+                  return Text("Something went wrong!");
+                }
+              },
 
 
+            ),
           ),
+          ],
         )
     );
   }

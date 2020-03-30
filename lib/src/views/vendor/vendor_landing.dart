@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/src/models/models.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_card.dart';
 
 
-class VendorLanding extends StatefulWidget {
+class RestaurantLanding extends StatefulWidget {
+  final Restaurant restaurant;
+
+  const RestaurantLanding({Key key, this.restaurant}) : assert(restaurant!=null), super(key: key);
   @override
-  _VendorLandingState createState() => _VendorLandingState();
+  _RestaurantLandingState createState() => _RestaurantLandingState();
 }
 
-class _VendorLandingState extends State<VendorLanding> {
+class _RestaurantLandingState extends State<RestaurantLanding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +33,13 @@ class _VendorLandingState extends State<VendorLanding> {
 
                 Padding(
                   padding: const EdgeInsets.only(left:15.0, top: 40.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 15.0,
-                    child: Icon(Icons.keyboard_arrow_left, color: Colors.black, size: 20.0,),
+                  child: GestureDetector(
+                    onTap: ()=>Navigator.pop(context),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 15.0,
+                      child: Icon(Icons.keyboard_arrow_left, color: Colors.black, size: 20.0,),
+                    ),
                   ),
                 ),
               ],
@@ -45,7 +52,7 @@ class _VendorLandingState extends State<VendorLanding> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text("<<Restaurant Name>>", style: TextStyle(fontSize: 20.0, color: Colors.black), ),
+                  Text("${widget.restaurant.restaurant_name}", style: TextStyle(fontSize: 20.0, color: Colors.black), ),
                   Spacer(),
                   CircleAvatar(
                     backgroundColor: Colors.grey.withOpacity(0.7),
@@ -65,7 +72,7 @@ class _VendorLandingState extends State<VendorLanding> {
                       Icon(Icons.location_on, color: Colors.grey,),
                       SizedBox(width: 5.0,),
                       //TODO replace the style with the uniform theme style
-                      Text("34 Admiralty Way, Summerstrand; ", style: TextStyle(fontSize: 14.0, color: Colors.black),),
+                      Text("${widget.restaurant.address} ", style: TextStyle(fontSize: 14.0, color: Colors.black),),
 
                     ],
                   ),

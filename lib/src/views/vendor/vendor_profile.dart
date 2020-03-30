@@ -26,7 +26,6 @@ class _VendorProfileState extends State<VendorProfile> {
   }
    @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Column(
         children: <Widget>[

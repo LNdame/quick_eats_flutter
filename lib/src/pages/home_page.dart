@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_eats/blocs/restaurant_bloc/bloc.dart';
 import 'package:quick_eats/src/datarepo/vendor_data_manager.dart';
 import 'package:quick_eats/src/models/vendor_model.bak.dart';
 import 'package:quick_eats/src/ui_reusable/bought_food_widget.dart';
@@ -7,86 +9,86 @@ import 'package:quick_eats/src/ui_reusable/search_widget.dart';
 import 'package:quick_eats/src/ui_reusable/food_category_widget.dart';
 import 'package:quick_eats/res/colors.dart';
 
-
 import 'package:quick_eats/src/models/food_model.dart';
+
 //import the data from fake(for now) repo
 import 'package:quick_eats/src/datarepo/food_data.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
+import 'package:quick_eats/src/views/restaurant/restaurant_limited_widget.dart';
 
-
-
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => new _HomePageState();
-
 }
 
 class _HomePageState extends State<HomePage> {
-
   List<Vendor> _vendors;
 
   @override
-  void initState() {
-
-  }
+  void initState() {}
 
   List<Food> _foods = foods;
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
         children: <Widget>[
           HomeTopInfo(),
           FoodCategory(),
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 20.0,
+          ),
           SearchField(),
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 20.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Discover the foods around you",
+              Text(
+                "Discover the foods around you",
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
-                ) ,
+                ),
               ),
               GestureDetector(
-                onTap: (){},
-                child: Text("View all",
+                onTap: () {
+                  Navigator.pushNamed(context, '/vendor_all');
+                },
+                child: Text(
+                  "View all",
                   style: TextStyle(
-                    color: qeAccentDark,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0
-                  ),
+                      color: qeAccentDark,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0),
                 ),
               )
-
             ],
           ),
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 20.0,
+          ),
           Column(
-           mainAxisSize: MainAxisSize.min,
-           //   children: _foods.map(_buildFoodItems).toList(),
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-                 Flexible(
-                   fit: FlexFit.loose,
-                   flex: 1,
-                  child: _frontVendorBuilder(context) ,
-                ),
-
-
+              Flexible(
+                  fit: FlexFit.loose,
+                  flex: 1,
+                  child: BlocProvider(
+                    create: (context) => RestaurantBloc(context: context),
+                    child: RestaurantLimited(),
+                  )),
             ],
           )
-
         ],
       ),
     );
   }
 
-  FutureBuilder<List<Vendor>> _frontVendorBuilder(BuildContext context){
+/*FutureBuilder<List<Vendor>> _frontVendorBuilder(BuildContext context){
     return FutureBuilder<List<Vendor>>(
       future: VendorDataManager.requestAllVendors(context),
       builder: (context, snapshot){
@@ -141,7 +143,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
+*/
 //  Container(
 //  margin: EdgeInsets.only(bottom: 20.0),
 //  child: Card(
