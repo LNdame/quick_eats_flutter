@@ -54,75 +54,37 @@ class _SignInPageState extends State<SignInPage> {
     setState(() {
       isLoggingIn = true;
     });
-    String readToken = await storage.read(key: 'token');
-    if(readToken==null)
-      getAuthTokenAndLogin(user);
-    else
-      loginUser(user, readToken);
-  }
-  void getAuthTokenAndLogin(Map<String,dynamic> user) async {
-    await Future.delayed(Duration.zero);
-    final response = Provider.of<UserAccountService>(context).createAuthToken(
-        user["username"],user["password"],"password"
-    );
-    response.then((onValue) async {
-      Map<String, dynamic> authJson = jsonDecode(onValue.bodyString);
-      String token = authJson["access_token"];
-      loginUser(user, token);
-      await storage.write(key: "token", value: token);
-    }, onError: (error) {
-      //bad request
-      debugPrint(error.toString());
-      if (error.statusCode == 400) {
-        //debugPrint(error.toString());
-        //Map<String, dynamic> errorJson = jsonDecode(error.bodyString);
-        Map<String, dynamic> errorJson = jsonDecode(error.bodyString);
-        errorDescription = errorJson['error_description'];
-        if (errorDescription.contains('credentials')) {
-          emailExists = false;
-        }
-        if (errorDescription.contains('combination')) {
-          incorrectPassword = true;
-        }
-        FormState form = _formKey.currentState;
-        if (form != null)
-          form.validate();
-        else
-          debugPrint('form is null');
-      }
-      //debugPrint(error.bodyString);
-      //print(error.toString());
-    }).whenComplete(() =>
-        setState(() {
-          isLoggingIn = false;
-        }));
+
+    /*String readToken = await storage.read(key: 'token');*/
+    loginUser(user);
   }
 
-  void loginUser(Map<String,dynamic> user, String accessToken){
-    String bearerToken = "Bearer "+accessToken;
+
+  void loginUser(Map<String,dynamic> user){
     final response = Provider.of<UserAccountService>(context).loginUser({
-      'emailAddress': user["username"],
+      'email': user["username"],
       'password': user["password"],
-    },bearerToken);
+    });
     response.then((onValue) {
       SingleResponse response = new SingleResponse().fromJson(jsonDecode(onValue.bodyString));
-      if (!response.isDidError()) {
+      debugPrint(onValue.bodyString);
+      if (response.error==null) {
         //enableEmail = false;
         debugPrint('successful');
+        storage.write(key: 'token', value: response.accessToken);
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => new MainView()));
         //model= new ForgotPasswordModel(response.model['userID'], response.model['appLogID'], response.model['resetPasswordToken']);
       }
       else {
-        debugPrint(response.message);
+        debugPrint(response.error);
       }
     }, onError: (error) async{
       //bad request
       if(error.statusCode ==401)
         {
-          String readToken = await storage.read(key: 'token');
-          debugPrint(readToken);
-          debugPrint('unauthorized');
+          incorrectPassword = true;
+          errorDescription = "Invalid password";
         }
       if (error.statusCode == 400) {
         SingleResponse response = new SingleResponse().fromJson(jsonDecode(error.bodyString));

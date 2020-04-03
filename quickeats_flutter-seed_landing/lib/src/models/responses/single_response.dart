@@ -5,6 +5,9 @@ import 'package:json_annotation/json_annotation.dart';
  class SingleResponse {
    bool didError;
    String message;
+   String error;
+   String accessToken;
+   dynamic user;
    dynamic model;
 
    bool isDidError() {
@@ -19,10 +22,16 @@ import 'package:json_annotation/json_annotation.dart';
     return message;
   }
 
+  String getError() {
+    return error;
+  }
+
   /* void setMessage(String message) {
     this.message = message;
   }*/
-
+    getUser(){
+      return user;
+    }
    getModel() {
     return model;
   }
@@ -32,9 +41,12 @@ import 'package:json_annotation/json_annotation.dart';
   }*/
    fromJson(Map<String, dynamic> json) {
      return SingleResponse()
-     ..didError = json['didError'] as bool
-     ..message = json['message'] as String
-     ..model = json['model'];
+       ..didError = json['didError'] as bool
+       ..message = json['message'] as String
+       ..accessToken = json['access_token'] as String
+       ..error = json['error'] as String
+       ..model = json['model']
+       ..user = json['user'];
    }
    
 }

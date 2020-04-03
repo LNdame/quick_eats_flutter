@@ -209,7 +209,7 @@ class FirstPage extends State<RegisterAccount> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _fetchCountries();
+    //_fetchCountries();
     showPassword = false;
     duplicateEmail=false;
     isRegistering = false;
@@ -221,13 +221,15 @@ class FirstPage extends State<RegisterAccount> {
       SingleResponse response1 = new SingleResponse().fromJson(
           jsonDecode(onValue.bodyString));
 
-      if (!response1.isDidError()) {
-        ForgotPasswordModel model = new ForgotPasswordModel(
-            response1.model['userID'], response1.model['appLogID'], null);
+      if (response1.error==null) {
+        /*ForgotPasswordModel model = new ForgotPasswordModel(
+            response1.model['userID'], response1.model['appLogID'], null);*/
 
         //go to second page
-        Navigator.push(context,
-            new MaterialPageRoute(builder: (context) => new RegisterAccount2(model:model)));
+        /*Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new RegisterAccount2(model:model)));*/
+        Navigator.push(context, new MaterialPageRoute(builder: (context) =>
+        new SignInPage()));
       }
       else {
         debugPrint(response1.message);
@@ -344,14 +346,15 @@ void dispose(){
           ),
           Container(padding: new EdgeInsets.all(5.0)),
           TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                  labelText: 'Email Address',
-                  contentPadding: EdgeInsets.all(13.0)),
-              keyboardType: TextInputType.emailAddress,
-              validator: emailValidation,
+            controller: emailController,
+            decoration: InputDecoration(
+                labelText: 'Email Address',
+                contentPadding: EdgeInsets.all(13.0)),
+            keyboardType: TextInputType.emailAddress,
+            validator: emailValidation,
           ),
-          Container(padding: new EdgeInsets.all(13.0)),
+          Container(padding: new EdgeInsets.all(5.0)),
+          /*Container(padding: new EdgeInsets.all(13.0)),
           Text("Select country"),
           //Container(padding: new EdgeInsets.all(5.0)),
           DropdownButton(value: currentCountry,
@@ -363,8 +366,16 @@ void dispose(){
               });
             },
             isExpanded: true,
-          ),
-          Container(padding: new EdgeInsets.all(5.0)),
+          ),*/
+          TextFormField(
+            controller: phoneNumberController,
+            decoration: InputDecoration(
+                labelText:"Phone Number",
+                contentPadding: EdgeInsets.all(11.0)),
+            keyboardType: TextInputType.number,
+            validator: validation.validatePhoneNumber,
+          )
+          /*Container(padding: new EdgeInsets.all(5.0)),
           Text("Phone Number"),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -388,49 +399,50 @@ void dispose(){
                       validator: validation.validatePhoneNumber,
                   )),
             ],
-          ),
-           Container(padding: new EdgeInsets.all(5.0))
+          ),*/
+          , Container(padding: new EdgeInsets.all(5.0))
           , TextFormField(
-              controller: passwordController,
-              decoration: InputDecoration(hintText: 'Enter password',
-                labelText: 'Password',
+            controller: passwordController,
+            decoration: InputDecoration(hintText: 'Enter password',
+              labelText: 'Password',
+              contentPadding: EdgeInsets.all(13.0),
+              suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye, color: qePrimaryText),
+                  onPressed: () {
+                    showPassword = !showPassword;
+                  }
+              ),
+            ),
+            autocorrect: false,
+            keyboardType: TextInputType.text,
+            obscureText: !showPassword,
+            validator: validation.checkPasswordValidity,
+          ),
+          Container(padding: new EdgeInsets.all(5.0)),
+          TextFormField(
+            decoration: InputDecoration(hintText: 'Enter password again',
+                labelText: 'Confirm Password',
                 contentPadding: EdgeInsets.all(13.0),
                 suffixIcon: IconButton(
                     icon: Icon(Icons.remove_red_eye, color: qePrimaryText),
                     onPressed: () {
                       showPassword = !showPassword;
-                    }
-                ),
-              ),
-              autocorrect: false,
-              keyboardType: TextInputType.text,
-              obscureText: !showPassword,
-              validator: validation.checkPasswordValidity,
-          ),
-          Container(padding: new EdgeInsets.all(5.0)),
-          TextFormField(
-              decoration: InputDecoration(hintText: 'Enter password again',
-                  labelText: 'Confirm Password',
-                  contentPadding: EdgeInsets.all(13.0),
-                  suffixIcon: IconButton(
-                      icon: Icon(Icons.remove_red_eye, color: qePrimaryText),
-                      onPressed: () {
-                        showPassword = !showPassword;
-                      })
-              ),
-              keyboardType: TextInputType.text,
-              obscureText: !showPassword,
-              autocorrect: false,
-              validator: (value) =>
-              value != passwordController.text.trim()
-                  ? "Passwords do not match"
-                  : null,
+                    })
+            ),
+            keyboardType: TextInputType.text,
+            obscureText: !showPassword,
+            autocorrect: false,
+            validator: (value) =>
+            value != passwordController.text.trim()
+                ? "Passwords do not match"
+                : null,
           ),
           Container(padding: new EdgeInsets.all(5.0)),
           RaisedButton(
             onPressed: isRegistering
                 ? null
-                : () => _formKey.currentState.validate()
+                : () =>
+            _formKey.currentState.validate()
                 ? registerUser(_formKey)
                 : debugPrint('validation error'),
             disabledColor: Colors.grey,
@@ -451,18 +463,20 @@ void dispose(){
       body: Container(
           padding: const EdgeInsets.all(20.0),
           //child: codeItems!=null? form : Center(child: CircularProgressIndicator())
-          child: codeItems!=null? form : Center(
-            child: Animator(tween: Tween<double>(begin: 0.4,end:1.2),
+          /*child: codeItems != null ? form : Center(
+            child: Animator(tween: Tween<double>(begin: 0.4, end: 1.2),
               curve: Curves.fastOutSlowIn,
               cycles: 0,
-              builder: (anim)=> Transform.scale(
-                  scale: anim.value,
-                  child: Image(
-                    image: AssetImage('assets/images/temp_logo.png'),
-                    height: 200.0,
-                    width: 120.0,
-                  )),
-            ),)
+              builder: (anim) =>
+                  Transform.scale(
+                      scale: anim.value,
+                      child: Image(
+                        image: AssetImage('assets/images/temp_logo.png'),
+                        height: 200.0,
+                        width: 120.0,
+                      )),
+            ),)*/
+          child: form,
       ),
 
 
@@ -481,9 +495,6 @@ void dispose(){
         surnameController.text.trim(),
         emailController.text.trim(),
         passwordController.text.trim(),
-        currentCountry.countryID,
-        currentCode.dialingCodeID,
-        true,
         phoneNumberController.text.trim());
     final response = Provider.of<UserAccountService>(context).createAccount(user.toJson());
 
@@ -491,17 +502,22 @@ void dispose(){
       SingleResponse response1 = new SingleResponse().fromJson(
           jsonDecode(onValue.bodyString));
 
-      if (!response1.isDidError()) {
+/*      if (!response1.isDidError()) {
         ForgotPasswordModel model = new ForgotPasswordModel(
             response1.model['userID'], response1.model['appLogID'], null);
 
         //go to second page
         Navigator.push(context,
             new MaterialPageRoute(builder: (context) => new RegisterAccount2(model:model)));
+      }*/
+      if (response1.error==null) {
+
+        Navigator.push(context, new MaterialPageRoute(builder: (context) =>
+        new SignInPage()));
+
       }
       else {
-        debugPrint('in error');
-        debugPrint(response1.message);
+        debugPrint(response1.error);
       }
     }, onError: (error) {
       //debugPrint(error.toString());

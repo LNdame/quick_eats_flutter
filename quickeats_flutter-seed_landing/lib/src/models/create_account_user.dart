@@ -8,14 +8,10 @@ class CreateAccountUser {
   String surname;
   String emailAddress;
   String password;
-  int countryID;
-  int dialingCodeID;
   String phoneNumber;
-  bool isValid;
 
 
-  CreateAccountUser(this.name, this.surname, this.emailAddress, this.password, this.countryID, this.dialingCodeID, this.isValid,
-      this.phoneNumber);
+  CreateAccountUser(this.name, this.surname, this.emailAddress, this.password, this.phoneNumber);
 
   String getName() {
     return name;
@@ -49,6 +45,7 @@ class CreateAccountUser {
     this.password = password;
   }
 
+/*
   int getCountryID() {
     return countryID;
   }
@@ -72,6 +69,7 @@ class CreateAccountUser {
   void setValid(bool valid) {
     isValid = valid;
   }
+*/
 
   toString() {
     return 'Name: $name,Surname :$surname, Phone Number: $phoneNumber, Email: $emailAddress, Password: $password';
@@ -85,12 +83,10 @@ class CreateAccountUser {
       <String, dynamic>{
         'name': name,
         'surname': surname,
-        'emailAddress': emailAddress,
+        'email': emailAddress,
         'password': password,
-        'countryID': countryID,
-        'dialingCodeID': dialingCodeID,
-        'phoneNumber': phoneNumber,
-        'isValid': isValid
+        'contact_number': phoneNumber,
+        'role':"vendor"
       };
 
   void setPhoneNumber(String phoneNumber) {

@@ -12,9 +12,6 @@ CreateAccountUser _$CreateAccountUserFromJson(Map<String, dynamic> json) {
       json['surname'] as String,
       json['emailAddress'] as String,
       json['password'] as String,
-      json['countryID'] as int,
-      json['dialingCodeID'] as int,
-      json['isValid'] as bool,
       json['phoneNumber'] as String);
 }
 
@@ -24,8 +21,5 @@ Map<String, dynamic> _$CreateAccountUserToJson(CreateAccountUser instance) =>
       'surname': instance.surname,
       'emailAddress': instance.emailAddress,
       'password': instance.password,
-      'countryID': instance.countryID,
-      'dialingCodeID': instance.dialingCodeID,
-      'phoneNumber': instance.phoneNumber,
-      'isValid': instance.isValid
+      'phoneNumber': instance.phoneNumber
     };

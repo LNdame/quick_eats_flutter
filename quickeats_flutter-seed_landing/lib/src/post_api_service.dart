@@ -4,10 +4,10 @@ import 'package:chopper/chopper.dart';
 
 part 'post_api_service.chopper.dart';
 
-@ChopperApi(baseUrl:'/api/v1')
+@ChopperApi(baseUrl:'/api')
 abstract class UserAccountService extends ChopperService{
 
-  @Post(path: "/User/CreateUserAccount")
+  @Post(path: "/register")
   Future<Response<dynamic>> createAccount(@Body() Map<String,dynamic> model);
 
   @Post(path: "/User/CreateUserAccountConfirmCode")
@@ -19,8 +19,8 @@ abstract class UserAccountService extends ChopperService{
   @Get(path:"/User/VerifyUsername")
   Future<Response<dynamic>> checkUsername(@Query("username") String name);
 
-  @Post(path: "/User/Login")
-  Future<Response<dynamic>> loginUser(@Body() Map<String,dynamic> model,@Header('Authorization') String headerValue );
+  @Post(path: "/login")
+  Future<Response<dynamic>> loginUser(@Body() Map<String,dynamic> model);
 
   @Post(path: "/token/create",headers: {contentTypeKey: formEncodedHeaders})
   Future<Response<dynamic>> createAuthToken(@Field("username") String username,@Field("password") String password,
@@ -43,7 +43,7 @@ abstract class UserAccountService extends ChopperService{
 
   static UserAccountService create() {
     final client = ChopperClient(
-      baseUrl: "https://quickeats.co.za",
+      baseUrl: "https://dev.quickeats.co.za",
       services: [
         _$UserAccountService()
       ],
