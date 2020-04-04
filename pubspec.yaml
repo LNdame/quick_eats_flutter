@@ -28,7 +28,12 @@ dependencies:
   flutter_bloc: ^3.2.0
   equatable: ^1.1.1
  # connectivity: ^0.4.4
-  font_awesome_flutter: ^8.7.0
+  font_awesome_flutter: ^8.8.1
+  flutter_secure_storage: ^3.3.1+1
+  animator: ^1.0.0+5
+  dio: ^3.0.9
+  json_serializable: ^3.3.0
+  type_helper: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +73,7 @@ flutter:
     - assets/images/food3.jpg
     - assets/images/discount.png
     - assets/images/multifood.jpg
+    - assets/images/as.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

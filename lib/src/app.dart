@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:quick_eats/src/data/restaurant_api_service.dart';
 import 'package:quick_eats/src/quick_eats_routes.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
+import 'package:quick_eats/src/update_profile.dart';
 import 'package:quick_eats/src/utils/test_zone.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
+import 'package:quick_eats/src/views/sign_in_view.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
 import 'package:quick_eats/src/views/vendor/vendor_all.dart';
 import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
@@ -32,16 +34,16 @@ class QuickEats extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Quick Eats',
-        initialRoute: QuickEatsRoutes.home, //'''/vendor_all',
-        home:MainView(),  //MainView(), VendorAll()
+        initialRoute: QuickEatsRoutes.login, //'''/vendor_all',
+        home:LoginPage(),  //MainView(), VendorAll()
         theme: _qeTheme,
         routes: {
           QuickEatsRoutes.home: (context) => MainView(),
-          QuickEatsRoutes.login: (context) => LoginPage(),
+          QuickEatsRoutes.login: (context) => SignInPage(),
           QuickEatsRoutes.menuItem: (context) => MenuItemPage(),
           QuickEatsRoutes.vendor: (context) => RestaurantLanding(),
           QuickEatsRoutes.vendorAll: (context) => VendorAll(),
-
+          QuickEatsRoutes.updateProfile: (context) => UpdateProfile(title: 'Update Profile'),
           QuickEatsRoutes.test: (context) => TestZone(),
         },
       ),
