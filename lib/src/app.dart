@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_eats/src/data/menu_api_service.dart';
 import 'package:quick_eats/src/data/restaurant_api_service.dart';
 import 'package:quick_eats/src/quick_eats_routes.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
@@ -7,7 +8,7 @@ import 'package:quick_eats/src/utils/test_zone.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
 import 'package:quick_eats/src/views/vendor/vendor_all.dart';
-import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
+import 'package:quick_eats/src/views/restaurant/restaurant_landing.dart';
 import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
 import 'data/vendor_api_service.dart';
 import 'models/vendor_model.bak.dart';
@@ -20,6 +21,10 @@ class QuickEats extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        Provider(
+          create: (_)=>MenuApiService.create(),
+          dispose: (_,MenuApiService service)=>service.client.dispose(),
+        ),
         Provider(
             create: (_)=>RestaurantApiService.create(),
           dispose: (_,RestaurantApiService service)=>service.client.dispose(),

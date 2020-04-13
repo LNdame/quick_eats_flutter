@@ -7,10 +7,18 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Menu.serializer)
       ..add(MenuItem.serializer)
+      ..add(MenuResponse.serializer)
       ..add(Restaurant.serializer)
       ..add(RestaurantResponse.serializer)
       ..add(Vendor.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Menu)]),
+          () => new ListBuilder<Menu>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(MenuItem)]),
+          () => new ListBuilder<MenuItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Restaurant)]),
           () => new ListBuilder<Restaurant>()))

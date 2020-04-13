@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/src/models/menu_item_model.dart';
 
 class MenuItemCard extends StatefulWidget {
+  final MenuItem  menuItem;
+
+  const MenuItemCard({Key key, this.menuItem}) : super(key: key);
+
   @override
   _MenuItemCardState createState() => _MenuItemCardState();
 }
@@ -45,7 +50,7 @@ class _MenuItemCardState extends State<MenuItemCard> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(5.0),
-                          child: Text("<<Menu Item Title>>", style: TextStyle(
+                          child: Text("${widget.menuItem.item_name}", style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.black,
                           ),),
@@ -53,7 +58,7 @@ class _MenuItemCardState extends State<MenuItemCard> {
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           //TODO replace the style with the uniform theme style
-                          child: Text("<<Menu Item Subtitle>>", style: TextStyle(
+                          child: Text("${widget.menuItem.item_description}", style: TextStyle(
                             fontSize: 12.0,
                             color: Colors.grey,
                           ),),

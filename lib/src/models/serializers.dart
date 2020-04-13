@@ -7,6 +7,8 @@ part 'serializers.g.dart';
 
 @SerializersFor(const [
   RestaurantResponse,
+  MenuResponse,
+  Menu,
   Restaurant,
   MenuItem,
   Vendor

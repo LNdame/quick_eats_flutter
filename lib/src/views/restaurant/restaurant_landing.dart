@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quick_eats/blocs/menu_bloc/bloc.dart';
 import 'package:quick_eats/src/models/models.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_card.dart';
+
+import 'menu_bloc_list_widget.dart';
 
 
 class RestaurantLanding extends StatefulWidget {
@@ -116,11 +120,22 @@ class _RestaurantLandingState extends State<RestaurantLanding> {
                 ),
               ),
             ),
-
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Flexible(
+                    fit: FlexFit.loose,
+                    flex: 1,
+                    child: BlocProvider(
+                      create: (context) => MenuBloc(context: context),
+                      child: MenuBlocList(restaurantId: widget.restaurant.id),
+                    )),
+              ],
+            )
+            /*MenuItemCard(),
             MenuItemCard(),
             MenuItemCard(),
-            MenuItemCard(),
-            MenuItemCard(),
+            MenuItemCard(),*/
 
           ],
         ),
