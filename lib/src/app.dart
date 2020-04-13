@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:quick_eats/src/data/restaurant_api_service.dart';
 import 'package:quick_eats/src/quick_eats_routes.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
-import 'package:quick_eats/src/update_profile.dart';
+import 'package:quick_eats/src/views/update_profile.dart';
 import 'package:quick_eats/src/utils/test_zone.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
 import 'package:quick_eats/src/views/sign_in_view.dart';

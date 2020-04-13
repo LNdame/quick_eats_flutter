@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quick_eats/src/post_api_service.dart';
-import 'package:quick_eats/src/validation.dart';
+import 'package:quick_eats/src/data/post_api_service.dart';
+import 'package:quick_eats/src/utils/validation.dart';
 import 'package:quick_eats/src/views/sign_in_view.dart';
 
-import 'models/responses/single_response.dart';
+import 'package:quick_eats/src/models/responses/single_response.dart';
 
 
 class RecoverPassword extends StatefulWidget {

@@ -5,14 +5,14 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:quick_eats/res/colors.dart';
 import 'package:quick_eats/src/models/responses/single_response.dart';
-import 'package:quick_eats/src/post_api_service.dart';
-import 'package:quick_eats/src/validation.dart';
+import 'package:quick_eats/src/data/post_api_service.dart';
+import 'package:quick_eats/src/utils/validation.dart';
 
 
 import 'package:quick_eats/src/models/create_account_user.dart';
 
-import '../recover_password.dart';
-import '../registration.dart';
+import 'package:quick_eats/src/views/recover_password.dart';
+import 'package:quick_eats/src/views/registration.dart';
 import 'mainview.dart';
 
 class SignInPage extends StatefulWidget{

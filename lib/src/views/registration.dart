@@ -6,15 +6,15 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_eats/res/colors.dart';
-import 'package:quick_eats/src/post_api_service.dart';
+import 'package:quick_eats/src/data/post_api_service.dart';
 import 'package:quick_eats/src/models/responses/single_response.dart';
-import 'package:quick_eats/src/recover_password.dart';
-import 'package:quick_eats/src/validation.dart';
+import 'package:quick_eats/src/views/recover_password.dart';
+import 'package:quick_eats/src/utils/validation.dart';
 import 'package:quick_eats/src/views/sign_in_view.dart';
 
-import 'models/country.dart';
-import 'models/create_account_user.dart';
-import 'models/dialling_code.dart';
+import 'package:quick_eats/src/models/country.dart';
+import 'package:quick_eats/src/models/create_account_user.dart';
+import 'package:quick_eats/src/models/dialling_code.dart';
 import 'package:quick_eats/src/models/responses/list_response.dart';
 
 
