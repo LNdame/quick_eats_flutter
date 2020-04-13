@@ -5,4 +5,7 @@ class QuickEatsRoutes{
   static final vendor= '/vendor';
   static final vendorAll=  '/vendor_all';
   static final test= '/test';
+  static final updateProfile ='/update_profile';
+
+
 }
