@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:quick_eats/src/models/models.dart';
-import 'package:quick_eats/src/views/vendor/vendor_landing.dart';
+import 'package:quick_eats/src/views/restaurant/restaurant_landing.dart';
 import 'package:quick_eats/src/views/vendor/vendor_profile.dart';
 
 class RestaurantCard extends StatefulWidget {

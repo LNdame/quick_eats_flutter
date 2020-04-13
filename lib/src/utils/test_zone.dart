@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_eats/src/data/menu_api_service.dart';
 import 'package:quick_eats/src/data/repositories.dart';
 
 class TestZone extends StatefulWidget {
@@ -14,7 +15,7 @@ class _TestZoneState extends State<TestZone> {
       body:
        Center(
         child: RaisedButton(child: Text("Submit"),  onPressed: ()async{
-          final response = await Provider.of<RestaurantApiService>(context,listen: false).getAllRestaurants();
+          final response = await Provider.of<MenuApiService>(context,listen: false).getAllMenus("037855a0-77d9-11ea-a2cc-ef56bfa81bbf");
               print(response.body);
         })
         ,),

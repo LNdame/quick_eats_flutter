@@ -8,13 +8,28 @@ abstract class MenuItem implements Built<MenuItem, MenuItemBuilder> {
   String get id;
 
   @nullable
-  String get menu_name;
+  String get item_name;
 
   @nullable
-  String get restaurant_id;
+  String get menu_id;
 
   @nullable
-  String get description;
+  String get item_description;
+
+  @nullable
+  String get item_picture_url;
+
+  @nullable
+  String get item_price;
+
+  @nullable
+  String get notes;
+
+  @nullable
+  int get is_vegan;
+
+  @nullable
+  int get is_halal;
 
   MenuItem._();
 
