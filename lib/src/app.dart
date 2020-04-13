@@ -6,6 +6,7 @@ import 'package:quick_eats/src/quick_eats_routes.dart';
 import 'package:quick_eats/src/ui_reusable/vendor_widget.dart';
 import 'package:quick_eats/src/utils/test_zone.dart';
 import 'package:quick_eats/src/views/login/login_page.dart';
+import 'package:quick_eats/src/views/ordertracking/order_tracking.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_page.dart';
 import 'package:quick_eats/src/views/vendor/vendor_all.dart';
 import 'package:quick_eats/src/views/restaurant/restaurant_landing.dart';
@@ -37,8 +38,8 @@ class QuickEats extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Quick Eats',
-        initialRoute: QuickEatsRoutes.home, //'''/vendor_all',
-        home:MainView(),  //MainView(), VendorAll()
+        initialRoute: QuickEatsRoutes.orderTracking, //'''/vendor_all',
+        home:OrderTracking(),  //MainView(), VendorAll()
         theme: _qeTheme,
         routes: {
           QuickEatsRoutes.home: (context) => MainView(),
@@ -46,7 +47,7 @@ class QuickEats extends StatelessWidget {
           QuickEatsRoutes.menuItem: (context) => MenuItemPage(),
           QuickEatsRoutes.vendor: (context) => RestaurantLanding(),
           QuickEatsRoutes.vendorAll: (context) => VendorAll(),
-
+          QuickEatsRoutes.orderTracking: (context)=> OrderTracking(),
           QuickEatsRoutes.test: (context) => TestZone(),
         },
       ),

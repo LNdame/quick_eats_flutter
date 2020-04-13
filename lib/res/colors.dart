@@ -26,3 +26,8 @@ const primaryGradient = const LinearGradient(
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );
+
+
+ const Color qeTrackerYellow = Color.fromRGBO(255, 187, 70, 1);
+ const Color qeTrackerBlue = Color.fromRGBO(76, 139, 245, 1);
+ const Color qeTrackerGrey = Color.fromRGBO(207, 207, 207, 1);

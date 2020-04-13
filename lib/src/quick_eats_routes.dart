@@ -4,5 +4,6 @@ class QuickEatsRoutes{
   static final menuItem= '/menu_item';
   static final vendor= '/vendor';
   static final vendorAll=  '/vendor_all';
+  static final orderTracking=  '/order_tracking';
   static final test= '/test';
 }
