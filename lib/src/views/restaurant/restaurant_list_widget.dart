@@ -4,7 +4,10 @@ import 'package:quick_eats/src/ui_reusable/restaurant_card.dart';
 import 'package:built_collection/built_collection.dart';
 
 ListView buildRestaurantList(BuildContext context, BuiltList<Restaurant> restaurants){
+  ScrollController _controller = ScrollController();
   return ListView.builder(shrinkWrap: true,
+      physics: ClampingScrollPhysics(),
+      controller: _controller,
       itemCount: restaurants.length,
       itemBuilder: (context, index){
         return Container(

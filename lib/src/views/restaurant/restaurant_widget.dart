@@ -11,7 +11,6 @@ import 'package:quick_eats/src/views/restaurant/restaurant_list_widget.dart';
 
 
 class RestaurantWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
 
@@ -21,6 +20,7 @@ class RestaurantWidget extends StatelessWidget {
         backgroundColor: qeBackgroundWhite,
 
         body: ListView(
+
           children: <Widget>[
            AltTopInfoWidget(),
           Center(
@@ -49,9 +49,13 @@ class RestaurantWidget extends StatelessWidget {
             ),
           ),
           ],
-        )
+        ),
     );
   }
+
+
+
+
 
 
   ListView _buildRestaurantList(BuildContext context, BuiltList<Restaurant> restaurants){
@@ -77,6 +81,46 @@ class RestaurantWidget extends StatelessWidget {
             ),
           );
         }
-    );
+    );\\
+
+    estedScrollView(
+
+          body: Column(
+          children: <Widget>[
+           AltTopInfoWidget(),
+          Center(
+            child: BlocBuilder<RestaurantBloc, RestaurantState>(
+              builder: (context, state){
+                if(state is RestaurantEmpty){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if(state is RestaurantLoading){
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if(state is RestaurantLoaded){
+                  final BuiltList<Restaurant> restaurants = state.restaurants;
+
+                  return buildRestaurantList(context, restaurants);
+                }
+                if(state is RestaurantError){
+                  return Text("Something went wrong!");
+                }
+                else{
+                  return Text("Something went wrong!");
+                }
+              },
+
+
+            ),
+          ),
+          ],
+        ),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) { return <Widget>[
+            new SliverAppBar(
+              pinned: false,
+              //title: new Text('Restaurant'),
+            ),
+          ]; },
+        )
   }*/
 }
