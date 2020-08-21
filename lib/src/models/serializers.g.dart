@@ -7,7 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(MenuItem.serializer)
+      ..add(Menu.serializer)
       ..add(Restaurant.serializer)
       ..add(RestaurantResponse.serializer)
       ..add(Vendor.serializer)

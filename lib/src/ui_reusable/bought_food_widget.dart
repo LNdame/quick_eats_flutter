@@ -28,7 +28,7 @@ class _BoughtFoodState extends State<BoughtFood> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return ClipRRect(
       borderRadius: BorderRadius.all(
         Radius.circular(10.0),

@@ -6,6 +6,9 @@ class QuickEatsRoutes{
   static final vendorAll=  '/vendor_all';
   static final test= '/test';
   static final updateProfile ='/update_profile';
+  static final cart = '/cart';
+
+  static final checkOutPage = '/checkout';
 
 
 }

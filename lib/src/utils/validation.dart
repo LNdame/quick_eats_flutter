@@ -13,11 +13,11 @@ class Validation {
         alphaCase=false;
     for (int i = 0; i < pass.length; i++) {
       ch = pass[i];
-      if (isDigit(pass, i))
+      if (!numberFlag&&isDigit(pass, i))
         numberFlag = true;
-      if (ch.toUpperCase() == ch)
+      if (!capFlag&& ch.toUpperCase() == ch)
         capFlag = true;
-      if (ch == ch.toLowerCase())
+      if (!lowerCase&&ch == ch.toLowerCase())
         lowerCase = true;
     }
     Pattern special = r'[!@#$%&*()_+=|<>?{}\\~-]';
@@ -55,7 +55,7 @@ class Validation {
   String getCase(int cas) {
     switch (cas) {
       case 1:
-        return "Has to contain a capital letter";
+        return "Has to contain an upper case letter";
 
       case 2:
         return "Has to contain a number";

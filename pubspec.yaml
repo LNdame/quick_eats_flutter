@@ -34,6 +34,10 @@ dependencies:
   dio: ^3.0.9
   json_serializable: ^3.3.0
   type_helper: ^0.1.0
+  webview_flutter: ^0.3.22+1
+  money2: ^1.4.3
+  scoped_model: ^1.0.1
+  flutter_inappwebview: 
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +77,7 @@ flutter:
     - assets/images/food3.jpg
     - assets/images/discount.png
     - assets/images/multifood.jpg
+    - assets/images/temp_logo.png
     - assets/images/as.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

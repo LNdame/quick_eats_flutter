@@ -5,7 +5,7 @@ class OrderTopInfo extends StatelessWidget{
   final textStyle = TextStyle(fontSize: 32.0, fontWeight:  FontWeight.bold);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       child: Row(

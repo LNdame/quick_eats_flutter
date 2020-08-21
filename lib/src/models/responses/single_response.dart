@@ -1,13 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:quick_eats/src/models/create_account_user.dart';
 
 
 @JsonSerializable()
  class SingleResponse {
    bool didError;
    String message;
-   String error;
+   dynamic error;
    String accessToken;
-   dynamic user;
+   CreateAccountUser user;
    dynamic model;
 
    bool isDidError() {
@@ -44,9 +45,9 @@ import 'package:json_annotation/json_annotation.dart';
        ..didError = json['didError'] as bool
        ..message = json['message'] as String
        ..accessToken = json['access_token'] as String
-       ..error = json['error'] as String
+       ..error = json['error'] is bool ? json['error'] as bool : json['error'] as String
        ..model = json['model']
-       ..user = json['user'];
+       ..user = json['user']!=null ? CreateAccountUser.fromJson(json['user']) : null;
    }
    
 }

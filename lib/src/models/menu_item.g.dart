@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'menu_item_model.dart';
+part of 'menu_item.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
@@ -24,22 +24,34 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
         ..add(serializers.serialize(object.id,
             specifiedType: const FullType(String)));
     }
-    if (object.menu_name != null) {
+    if (object.item_name != null) {
       result
-        ..add('menu_name')
-        ..add(serializers.serialize(object.menu_name,
+        ..add('item_name')
+        ..add(serializers.serialize(object.item_name,
             specifiedType: const FullType(String)));
     }
-    if (object.restaurant_id != null) {
+    if (object.menu_id != null) {
       result
-        ..add('restaurant_id')
-        ..add(serializers.serialize(object.restaurant_id,
+        ..add('menu_id')
+        ..add(serializers.serialize(object.menu_id,
             specifiedType: const FullType(String)));
     }
-    if (object.description != null) {
+    if (object.item_description != null) {
       result
-        ..add('description')
-        ..add(serializers.serialize(object.description,
+        ..add('item_description')
+        ..add(serializers.serialize(object.item_description,
+            specifiedType: const FullType(String)));
+    }
+    if (object.item_picture_url != null) {
+      result
+        ..add('item_picture_url')
+        ..add(serializers.serialize(object.item_picture_url,
+            specifiedType: const FullType(String)));
+    }
+    if (object.item_price != null) {
+      result
+        ..add('item_price')
+        ..add(serializers.serialize(object.item_price,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -60,16 +72,24 @@ class _$MenuItemSerializer implements StructuredSerializer<MenuItem> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'menu_name':
-          result.menu_name = serializers.deserialize(value,
+        case 'item_name':
+          result.item_name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'restaurant_id':
-          result.restaurant_id = serializers.deserialize(value,
+        case 'menu_id':
+          result.menu_id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'description':
-          result.description = serializers.deserialize(value,
+        case 'item_description':
+          result.item_description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'item_picture_url':
+          result.item_picture_url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'item_price':
+          result.item_price = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -83,16 +103,26 @@ class _$MenuItem extends MenuItem {
   @override
   final String id;
   @override
-  final String menu_name;
+  final String item_name;
   @override
-  final String restaurant_id;
+  final String menu_id;
   @override
-  final String description;
+  final String item_description;
+  @override
+  final String item_picture_url;
+  @override
+  final String item_price;
 
   factory _$MenuItem([void Function(MenuItemBuilder) updates]) =>
       (new MenuItemBuilder()..update(updates)).build();
 
-  _$MenuItem._({this.id, this.menu_name, this.restaurant_id, this.description})
+  _$MenuItem._(
+      {this.id,
+      this.item_name,
+      this.menu_id,
+      this.item_description,
+      this.item_picture_url,
+      this.item_price})
       : super._();
 
   @override
@@ -107,26 +137,34 @@ class _$MenuItem extends MenuItem {
     if (identical(other, this)) return true;
     return other is MenuItem &&
         id == other.id &&
-        menu_name == other.menu_name &&
-        restaurant_id == other.restaurant_id &&
-        description == other.description;
+        item_name == other.item_name &&
+        menu_id == other.menu_id &&
+        item_description == other.item_description &&
+        item_picture_url == other.item_picture_url &&
+        item_price == other.item_price;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, id.hashCode), menu_name.hashCode),
-            restaurant_id.hashCode),
-        description.hashCode));
+        $jc(
+            $jc(
+                $jc($jc($jc(0, id.hashCode), item_name.hashCode),
+                    menu_id.hashCode),
+                item_description.hashCode),
+            item_picture_url.hashCode),
+        item_price.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('MenuItem')
           ..add('id', id)
-          ..add('menu_name', menu_name)
-          ..add('restaurant_id', restaurant_id)
-          ..add('description', description))
+          ..add('item_name', item_name)
+          ..add('menu_id', menu_id)
+          ..add('item_description', item_description)
+          ..add('item_picture_url', item_picture_url)
+          ..add('item_price', item_price))
         .toString();
   }
 }
@@ -138,27 +176,38 @@ class MenuItemBuilder implements Builder<MenuItem, MenuItemBuilder> {
   String get id => _$this._id;
   set id(String id) => _$this._id = id;
 
-  String _menu_name;
-  String get menu_name => _$this._menu_name;
-  set menu_name(String menu_name) => _$this._menu_name = menu_name;
+  String _item_name;
+  String get item_name => _$this._item_name;
+  set item_name(String item_name) => _$this._item_name = item_name;
 
-  String _restaurant_id;
-  String get restaurant_id => _$this._restaurant_id;
-  set restaurant_id(String restaurant_id) =>
-      _$this._restaurant_id = restaurant_id;
+  String _menu_id;
+  String get menu_id => _$this._menu_id;
+  set menu_id(String menu_id) => _$this._menu_id = menu_id;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String _item_description;
+  String get item_description => _$this._item_description;
+  set item_description(String item_description) =>
+      _$this._item_description = item_description;
+
+  String _item_picture_url;
+  String get item_picture_url => _$this._item_picture_url;
+  set item_picture_url(String item_picture_url) =>
+      _$this._item_picture_url = item_picture_url;
+
+  String _item_price;
+  String get item_price => _$this._item_price;
+  set item_price(String item_price) => _$this._item_price = item_price;
 
   MenuItemBuilder();
 
   MenuItemBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _menu_name = _$v.menu_name;
-      _restaurant_id = _$v.restaurant_id;
-      _description = _$v.description;
+      _item_name = _$v.item_name;
+      _menu_id = _$v.menu_id;
+      _item_description = _$v.item_description;
+      _item_picture_url = _$v.item_picture_url;
+      _item_price = _$v.item_price;
       _$v = null;
     }
     return this;
@@ -182,9 +231,11 @@ class MenuItemBuilder implements Builder<MenuItem, MenuItemBuilder> {
     final _$result = _$v ??
         new _$MenuItem._(
             id: id,
-            menu_name: menu_name,
-            restaurant_id: restaurant_id,
-            description: description);
+            item_name: item_name,
+            menu_id: menu_id,
+            item_description: item_description,
+            item_picture_url: item_picture_url,
+            item_price: item_price);
     replace(_$result);
     return _$result;
   }

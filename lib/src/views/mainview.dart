@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quick_eats/src//ui_reusable/drawerwidget.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:quick_eats/src/pages/account_page.dart';
 import 'package:quick_eats/src/pages/favorite_page.dart';
 import 'package:quick_eats/src/pages/home_page.dart';
 import 'package:quick_eats/src/pages/order_page.dart';
-import 'package:quick_eats/src/pages/profile_page.dart';
 import 'package:quick_eats/res/colors.dart';
+import 'package:quick_eats/src/pages/profile_page.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -20,7 +19,8 @@ class _MainViewState extends State<MainView> {
   HomePage _homePage;
   OrderPage _orderPage;
   FavoritePage _favoritePage;
-  ProfilePage _profilePage;
+  AccountPage _accountPage;
+  //ProfilePage _profilePage;
 
   List<Widget> _pages;
   Widget _currentPage;
@@ -30,15 +30,15 @@ class _MainViewState extends State<MainView> {
     _homePage = new HomePage();
     _orderPage = new OrderPage();
     _favoritePage = new FavoritePage();
-    _profilePage = new ProfilePage();
-    _pages = [_homePage, _orderPage, _favoritePage, _profilePage];
+    _accountPage = new AccountPage();
+    //_profilePage = new ProfilePage();
+    _pages = [_homePage, _orderPage, _favoritePage, _accountPage];
      _currentPage = _homePage;
      super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // ? TODO: implement build
     return Scaffold(
       backgroundColor: qeBackgroundWhite ,
       resizeToAvoidBottomPadding: false,
@@ -66,7 +66,8 @@ class _MainViewState extends State<MainView> {
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person,),
-                title: Text("Profile")
+                title: Text("Account")
+                //title: Text("Profile")
             ),
           ]
       ),

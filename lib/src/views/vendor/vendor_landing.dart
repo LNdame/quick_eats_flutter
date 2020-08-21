@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:quick_eats/src/datarepo/menu_items.dart';
+import 'package:quick_eats/src/models/cart_enum.dart';
+import 'package:quick_eats/src/models/cart.dart';
 import 'package:quick_eats/src/models/models.dart';
+import 'package:quick_eats/src/models/scoped_models.dart';
+import 'package:quick_eats/src/ui_reusable/bottom_cart_widget.dart';
 import 'package:quick_eats/src/views/vendor/menu_item_card.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 
 class RestaurantLanding extends StatefulWidget {
   final Restaurant restaurant;
 
-  const RestaurantLanding({Key key, this.restaurant}) : assert(restaurant!=null), super(key: key);
+  const RestaurantLanding({Key key, this.restaurant}): super(key: key);
   @override
   _RestaurantLandingState createState() => _RestaurantLandingState();
 }
 
 class _RestaurantLandingState extends State<RestaurantLanding> {
+  final menuItemsList = menuItems;
   @override
   Widget build(BuildContext context) {
+    return ScopedModelDescendant<ScopedQEModel>(
+        builder: (BuildContext context, Widget child, ScopedQEModel model) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -52,7 +61,7 @@ class _RestaurantLandingState extends State<RestaurantLanding> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text("${widget.restaurant.restaurant_name}", style: TextStyle(fontSize: 20.0, color: Colors.black), ),
+                  Text("${widget.restaurant!=null ? widget.restaurant.restaurant_name : model.currentRestraurant.restaurant_name}", style: TextStyle(fontSize: 20.0, color: Colors.black), ),
                   Spacer(),
                   CircleAvatar(
                     backgroundColor: Colors.grey.withOpacity(0.7),
@@ -72,7 +81,7 @@ class _RestaurantLandingState extends State<RestaurantLanding> {
                       Icon(Icons.location_on, color: Colors.grey,),
                       SizedBox(width: 5.0,),
                       //TODO replace the style with the uniform theme style
-                      Text("${widget.restaurant.address} ", style: TextStyle(fontSize: 14.0, color: Colors.black),),
+                      Text("${widget.restaurant!=null ? widget.restaurant.address : model.currentRestraurant.address} ", style: TextStyle(fontSize: 14.0, color: Colors.black),),
 
                     ],
                   ),
@@ -101,30 +110,40 @@ class _RestaurantLandingState extends State<RestaurantLanding> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left:15.0, right: 15.0, top: 5.0, bottom: 5.0),
+              padding: const EdgeInsets.only(left:15.0, right: 15.0, top: 5.0, bottom: 0.0),
               child: Divider(
                 color: Colors.grey.withOpacity(0.8),
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(left:15.0, right: 15.0, top: 15.0),
-              child: Container(
-                height: 40.0,
-                child: Center(
-                  child: Text("<<Add the choice chip here>>"),
-                ),
-              ),
-            ),
-
-            MenuItemCard(),
-            MenuItemCard(),
-            MenuItemCard(),
-            MenuItemCard(),
+            // Padding(
+            //   padding: const EdgeInsets.only(left:15.0, right: 15.0, top: 15.0),
+            //   child: Container(
+            //     height: 40.0,
+            //     child: Center(
+            //       child: Text("<<Add the choice chip here>>"),
+            //     ),
+            //   ),
+            // ),
+            createMenuItems()
 
           ],
         ),
       ),
+      bottomNavigationBar: model.currentCart==null ? null : BottomCartToolbar(CartOptions.cart),
+    );
+        });
+  }
+  createMenuItems(){
+    return ListView.builder(
+      shrinkWrap: true,
+      primary: false,
+      itemBuilder: (context, index) {
+        return MenuItemCard(menuItemsList[index]);
+      },
+      itemCount: menuItemsList.length,
     );
   }
 }
+
+

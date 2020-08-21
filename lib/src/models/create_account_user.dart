@@ -9,9 +9,17 @@ class CreateAccountUser {
   String emailAddress;
   String password;
   String phoneNumber;
+  String id;
 
+  CreateAccountUser(this.name, this.surname, this.emailAddress, this.password, this.phoneNumber, [this.id]);
 
-  CreateAccountUser(this.name, this.surname, this.emailAddress, this.password, this.phoneNumber);
+  CreateAccountUser.emptyConstructor();
+
+  String getId() { return id;}
+
+  void setId(String thisId){
+    this.id = thisId;
+  }
 
   String getName() {
     return name;
@@ -45,40 +53,22 @@ class CreateAccountUser {
     this.password = password;
   }
 
-/*
-  int getCountryID() {
-    return countryID;
-  }
-
-  void setCountryID(int countryID) {
-    this.countryID = countryID;
-  }
-
-  int getDialingCodeID() {
-    return dialingCodeID;
-  }
-
-  void setDialingCodeID(int dialingCodeID) {
-    this.dialingCodeID = dialingCodeID;
-  }
-
-  bool getIsValid() {
-    return isValid;
-  }
-
-  void setValid(bool valid) {
-    isValid = valid;
-  }
-*/
-
   toString() {
-    return 'Name: $name,Surname :$surname, Phone Number: $phoneNumber, Email: $emailAddress, Password: $password';
+    return 'Id: $id, Name: $name,Surname :$surname, Phone Number: $phoneNumber, Email: $emailAddress, Password: $password';
   }
 
   String getPhoneNumber() {
     return phoneNumber;
   }
 
+  static fromJson(Map<String, dynamic> json) {
+    return CreateAccountUser.emptyConstructor()
+      ..name = json['name'] as String
+      ..surname = json['surname'] as String
+      ..phoneNumber = json['contact_number'] as String
+      ..emailAddress = json['email'] as String
+      ..id = json['id'] as String;
+  }
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
         'name': name,
@@ -86,6 +76,7 @@ class CreateAccountUser {
         'email': emailAddress,
         'password': password,
         'contact_number': phoneNumber,
+        'id': id,
         'role':"vendor"
       };
 

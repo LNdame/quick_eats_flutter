@@ -5,6 +5,8 @@ import 'package:quick_eats/src/models/models.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:quick_eats/src/views/restaurant/restaurant_list_widget.dart';
 
+import '../../quick_eats_routes.dart';
+
 class RestaurantLimited extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

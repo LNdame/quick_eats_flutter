@@ -8,7 +8,7 @@ part 'serializers.g.dart';
 @SerializersFor(const [
   RestaurantResponse,
   Restaurant,
-  MenuItem,
+  Menu,
   Vendor
 ])
 final Serializers serializers =

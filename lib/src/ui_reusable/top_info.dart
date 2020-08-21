@@ -19,13 +19,13 @@ class _TopInfoState extends State<TopInfo> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
    // setState(() => this.context = context);
   }
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       child: Row(

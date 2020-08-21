@@ -10,7 +10,7 @@ class VendorMenuItem extends StatefulWidget{
 class _VendorMenuItemState extends State<VendorMenuItem> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10.0),
       child: Card(
